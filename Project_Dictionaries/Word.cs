@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Project_Dictionaries
 {
-    internal class Word
+    public class Word
     {
         public string wordOnRussian { get; set; }
-        private Dictionary<string, string> translations { get; set; }
+        private Dictionary<string, string> translations{get;set;}
+        public Dictionary<string, string> Translations { get { return translations; } set { } }
         public Word(string wordOnRussian)
         {
             this.wordOnRussian = wordOnRussian;
@@ -37,7 +38,7 @@ namespace Project_Dictionaries
             StringBuilder sb = new StringBuilder();
             sb.Append(this.wordOnRussian + ":");
             foreach(KeyValuePair<string, string> pair in translations)
-                sb.Append(pair.Key +":" + pair.Value + ":");
+                sb.Append(pair.Key + ':' + pair.Value + ':');
             return sb.ToString();
         }
     }

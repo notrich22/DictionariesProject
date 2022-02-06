@@ -7,12 +7,18 @@ using System.Threading.Tasks;
 
 namespace Project_Dictionaries
 {
-    internal class dictionary
+    public class dictionary
     {
         private List<Word> words;
+        private const string filename = "test.txt";
+        public List<Word> GetWords()
+        {
+            return words;
+        }
         public dictionary()
         {
             words = new List<Word>();
+            ReadFromFile();
         }
         public void addWord(string WOR)
         {
@@ -47,17 +53,19 @@ namespace Project_Dictionaries
                 sb.Append(word.ToString() + "\n");
             return sb.ToString();
         }
-        public bool SaveToFile(string filename)
+        public bool SaveToFile(string filename = filename)
         {
             try
             {
-                StreamWriter sw = new StreamWriter(filename);
-                sw.WriteLine(ToString());
-                sw.Close();
-                return true;
+                if(GetWords().Count != File.ReadAllLines(filename).Length){
+                    StreamWriter sw = new StreamWriter(filename, false);
+                    sw.WriteLine(ToString());
+                    sw.Close();
+                    return true; }
+                return false;
             }catch (Exception ex) { return false; }
         }
-        public bool ReadFromFile(string filename)
+        public bool ReadFromFile(string filename = filename)
         {
             try
             {
@@ -66,17 +74,17 @@ namespace Project_Dictionaries
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] parts = line.Split(':');
-                    addWord(parts[0]);
-                    for(int i = 1; i < parts.Count(); i++)
+                    if (!String.IsNullOrEmpty(parts[0]))
+                        addWord(parts[0]);
+                    for(int i = 1; i < parts.Count()-1; i+=2)
                     {
-                        if(i%2 != 0)
-                        {
-                            SetTranslation(parts[0], parts[i], parts[i+1]);
-                        }
+                        SetTranslation(parts[0], parts[i], parts[i+1]);
                     }
                 }
+                sr.Close();
                 return true;
-            }catch(Exception e) {return false; }
+            }
+            catch(Exception e) {return false; }
             }
     }
 }

@@ -11,7 +11,7 @@ namespace Project_Dictionaries
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
-        //[STAThread]
+        [STAThread]
         static void TESTFUNC()
         {
             dictionary dict = new dictionary();
@@ -36,10 +36,11 @@ namespace Project_Dictionaries
         }
         static void Main()
         {
-            /* Application.EnableVisualStyles();
-              Application.SetCompatibleTextRenderingDefault(false);
-              Application.Run(new Form1());*/
-            TESTFUNC();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
+           
+            //TESTFUNC();
         }
     }
 }
