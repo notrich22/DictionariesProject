@@ -42,7 +42,7 @@
             this.WordsBox.FormattingEnabled = true;
             this.WordsBox.Location = new System.Drawing.Point(12, 12);
             this.WordsBox.Name = "WordsBox";
-            this.WordsBox.Size = new System.Drawing.Size(175, 303);
+            this.WordsBox.Size = new System.Drawing.Size(175, 251);
             this.WordsBox.TabIndex = 0;
             this.WordsBox.SelectedIndexChanged += new System.EventHandler(this.WordsBox_SelectedIndexChanged);
             // 
@@ -87,9 +87,9 @@
             // WordTextBox
             // 
             this.WordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WordTextBox.Location = new System.Drawing.Point(291, 331);
+            this.WordTextBox.Location = new System.Drawing.Point(12, 277);
             this.WordTextBox.Name = "WordTextBox";
-            this.WordTextBox.Size = new System.Drawing.Size(265, 38);
+            this.WordTextBox.Size = new System.Drawing.Size(175, 38);
             this.WordTextBox.TabIndex = 5;
             // 
             // LanguagesCheckBox

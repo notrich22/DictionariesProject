@@ -32,23 +32,25 @@ namespace Project_Dictionaries
         {
             if (WordsBox.SelectedIndex != -1)
             {
-                TranslationsBoxPrint();
+                TranslationsBoxRefresh();
             }
         }
-        private void TranslationsBoxPrint()
+        private void TranslationsBoxRefresh()
         {
             LanguagesCheckBox.Items.Clear();
             LanguagesCheckBox.Visible = true;
             TranslationsBox.Items.Clear();
-            string curItem = WordsBox.SelectedItem.ToString();
-            Dictionary<string, string> translations = dict.FindByWOR(curItem).Translations;
-            foreach (string key in translations.Keys)
+            foreach (string key in dict.FindByWOR(WordsBox.SelectedItem.ToString()).Translations.Keys)
             {
                 LanguagesCheckBox.Items.Add(key);
             }
             for (int i = 0; i < LanguagesCheckBox.Items.Count; i++)
                 LanguagesCheckBox.SetItemChecked(i, true);
-            foreach (KeyValuePair<string, string> translation in translations)
+            TranslationsBoxPrint();
+        }
+        private void TranslationsBoxPrint()
+        {
+            foreach (KeyValuePair<string, string> translation in dict.FindByWOR(WordsBox.SelectedItem.ToString()).Translations)
             {
                 string format = $"{translation.Key}: {translation.Value}";
                 if(LanguagesCheckBox.CheckedItems.Contains(translation.Key))
@@ -58,7 +60,7 @@ namespace Project_Dictionaries
 
         private void LanguagesCheckBox_Click(object sender, EventArgs e)
         {
-            TranslationsBoxPrint();
+            TranslationsBoxRefresh();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
