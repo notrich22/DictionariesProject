@@ -80,8 +80,14 @@ namespace Project_Dictionaries
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            dict.RemoveWordByWOR(WordsBox.SelectedItem.ToString());
-            WordsBox.Items.Remove(WordsBox.SelectedItem.ToString());
+            if (WordsBox.SelectedItem != null)
+            {
+                dict.RemoveWordByWOR(WordsBox.SelectedItem.ToString());
+                WordsBox.Items.Remove(WordsBox.SelectedItem.ToString());
+                refresh();
+            }
+            else MessageBox.Show("Выберите слово!");
+
         }
 
         private void AddTranslationButton_Click(object sender, EventArgs e)
@@ -91,7 +97,7 @@ namespace Project_Dictionaries
                 Form TranslationForm = new AddTranslationForm(WordsBox.SelectedItem.ToString());
                 TranslationForm.Owner = this;
                 TranslationForm.ShowDialog();
-                TranslationsBoxPrint();
+                refresh();
             }
             else MessageBox.Show("Выберите слово чтобы добавить перевод!");
         }
@@ -103,8 +109,12 @@ namespace Project_Dictionaries
 
         private void DeleteTranslationButton_Click(object sender, EventArgs e)
         {
-            dict.FindByWOR(WordsBox.SelectedItem.ToString()).DeleteByLanguage(TranslationsBox.SelectedItem.ToString().Split(':')[0]);
-            TranslationsBox.Items.Remove(TranslationsBox.SelectedItem.ToString());
+            if (TranslationsBox.SelectedItem != null)
+            {
+                dict.FindByWOR(WordsBox.SelectedItem.ToString()).DeleteByLanguage(TranslationsBox.SelectedItem.ToString().Split(':')[0]);
+                TranslationsBox.Items.Remove(TranslationsBox.SelectedItem.ToString());
+            }
+            else MessageBox.Show("Выберите перевод!");
         }
     }
 }

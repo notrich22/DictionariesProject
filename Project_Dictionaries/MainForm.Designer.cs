@@ -76,7 +76,7 @@
             // 
             // AddTranslationButton
             // 
-            this.AddTranslationButton.Location = new System.Drawing.Point(652, 393);
+            this.AddTranslationButton.Location = new System.Drawing.Point(652, 328);
             this.AddTranslationButton.Name = "AddTranslationButton";
             this.AddTranslationButton.Size = new System.Drawing.Size(175, 54);
             this.AddTranslationButton.TabIndex = 4;
@@ -114,7 +114,7 @@
             // 
             // DeleteTranslationButton
             // 
-            this.DeleteTranslationButton.Location = new System.Drawing.Point(652, 328);
+            this.DeleteTranslationButton.Location = new System.Drawing.Point(652, 393);
             this.DeleteTranslationButton.Name = "DeleteTranslationButton";
             this.DeleteTranslationButton.Size = new System.Drawing.Size(175, 54);
             this.DeleteTranslationButton.TabIndex = 9;
