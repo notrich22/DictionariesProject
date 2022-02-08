@@ -87,7 +87,7 @@
             // WordTextBox
             // 
             this.WordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WordTextBox.Location = new System.Drawing.Point(12, 277);
+            this.WordTextBox.Location = new System.Drawing.Point(291, 331);
             this.WordTextBox.Name = "WordTextBox";
             this.WordTextBox.Size = new System.Drawing.Size(175, 38);
             this.WordTextBox.TabIndex = 5;
@@ -104,7 +104,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(291, 393);
+            this.SaveButton.Location = new System.Drawing.Point(290, 221);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(265, 54);
             this.SaveButton.TabIndex = 8;
