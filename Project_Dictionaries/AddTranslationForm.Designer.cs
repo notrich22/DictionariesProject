@@ -103,7 +103,9 @@
             this.Controls.Add(this.AddTranslationButton);
             this.Controls.Add(this.TranslationBox);
             this.Controls.Add(this.LanguageBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddTranslationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddWordForm";
             this.Load += new System.EventHandler(this.AddTranslationForm_Load);
             this.ResumeLayout(false);

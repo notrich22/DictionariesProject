@@ -10,7 +10,7 @@ namespace Project_Dictionaries
     public class dictionary
     {
         private List<Word> words;
-        private const string filename = "test.txt";
+        private const string filename = "Words.txt";
         public List<Word> GetWords()
         {
             return words;

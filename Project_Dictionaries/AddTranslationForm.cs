@@ -83,6 +83,7 @@ namespace Project_Dictionaries
             {
                 LanguageBox.Items.Add(TranslationBox.Text);
             }
+            else MessageBox.Show("Введите язык для добавления!");
         }
 
         private void DeleteLanguageButton_Click(object sender, EventArgs e)

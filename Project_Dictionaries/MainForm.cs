@@ -23,7 +23,8 @@ namespace Project_Dictionaries
             LanguagesCheckBox.Visible = false;
             WordsBox.Items.Clear();
             TranslationsBox.Items.Clear();
-            foreach(Word word in dict.GetWords())
+            LanguagesCheckBox.Items.Clear();
+            foreach (Word word in dict.GetWords())
             {
                 WordsBox.Items.Add(word.wordOnRussian);
             }
@@ -32,24 +33,13 @@ namespace Project_Dictionaries
         {
             if (WordsBox.SelectedIndex != -1)
             {
-                TranslationsBoxRefresh();
+                LanguagesCheckBoxPrint();
+                TranslationsBoxPrint();
             }
-        }
-        private void TranslationsBoxRefresh()
-        {
-            LanguagesCheckBox.Items.Clear();
-            LanguagesCheckBox.Visible = true;
-            TranslationsBox.Items.Clear();
-            foreach (string key in dict.FindByWOR(WordsBox.SelectedItem.ToString()).Translations.Keys)
-            {
-                LanguagesCheckBox.Items.Add(key);
-            }
-            for (int i = 0; i < LanguagesCheckBox.Items.Count; i++)
-                LanguagesCheckBox.SetItemChecked(i, true);
-            TranslationsBoxPrint();
         }
         private void TranslationsBoxPrint()
         {
+            TranslationsBox.Items.Clear();
             foreach (KeyValuePair<string, string> translation in dict.FindByWOR(WordsBox.SelectedItem.ToString()).Translations)
             {
                 string format = $"{translation.Key}: {translation.Value}";
@@ -57,10 +47,23 @@ namespace Project_Dictionaries
                     TranslationsBox.Items.Add(format);
             }
         }
-
+        private void LanguagesCheckBoxPrint()
+        {
+            
+            LanguagesCheckBox.Visible = true;
+            if (LanguagesCheckBox.Items.Count == 0)
+            {
+                LanguagesCheckBox.Items.Clear();
+                foreach (string key in dict.FindByWOR(WordsBox.SelectedItem.ToString()).Translations.Keys)
+                {
+                    LanguagesCheckBox.Items.Add(key);
+                }
+            }
+            TranslationsBoxPrint();
+        }
         private void LanguagesCheckBox_Click(object sender, EventArgs e)
         {
-            TranslationsBoxRefresh();
+           //TranslationsBoxPrint();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -115,6 +118,29 @@ namespace Project_Dictionaries
                 TranslationsBox.Items.Remove(TranslationsBox.SelectedItem.ToString());
             }
             else MessageBox.Show("Выберите перевод!");
+        }
+
+        private void LanguagesCheckBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            if (WordsBox.SelectedIndex != -1)
+            {
+                LanguagesCheckBoxPrint();
+                TranslationsBoxPrint();
+            }
+            else
+            {
+                refresh();
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dict.SaveToFile();
         }
     }
 }
